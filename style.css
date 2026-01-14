@@ -1,0 +1,267 @@
+:root {
+	--Dark-Grayish-Blue: hsl(217, 19%, 35%);
+	--Desaturated-Dark-Blue: hsl(214, 17%, 51%);
+	--Grayish-Blue: hsl(212, 23%, 69%);
+	--Light-Grayish-Blue: hsl(210, 46%, 95%);
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Manrope', sans-serif;
+	background: hsl(210, 46%, 95%);
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 1rem;
+}
+
+section {
+	background: white;
+	max-width: 375px;
+	border-radius: 10px;
+	overflow: visible;
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.preview-img img {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+	display: block;
+	border-radius: 10px 10px 0 0;
+}
+
+.preview-content {
+	padding: 36px 32px 20px;
+	line-height: 1.6;
+}
+
+.preview-content h1 {
+	font-size: 16px;
+	font-weight: 700;
+	color: var(--Dark-Grayish-Blue);
+	margin-bottom: 12px;
+	line-height: 1.5;
+}
+
+.preview-content > p {
+	font-size: 13px;
+	font-weight: 500;
+	color: var(--Desaturated-Dark-Blue);
+	line-height: 1.55;
+	margin-bottom: 32px;
+}
+
+.preview-footer {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	min-height: 38px;
+}
+
+.author {
+	display: flex;
+	gap: 16px;
+	align-items: center;
+	transition: opacity 0.3s ease;
+}
+
+.avatar {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+}
+
+.author-name {
+	font-size: 13px;
+	font-weight: 700;
+	color: var(--Dark-Grayish-Blue);
+	margin-bottom: 2px;
+}
+
+.author-post-date {
+	font-size: 13px;
+	font-weight: 500;
+	color: var(--Grayish-Blue);
+}
+
+/* Share Button */
+.share-btn {
+	width: 32px;
+	height: 32px;
+	background: var(--Light-Grayish-Blue);
+	border-radius: 50%;
+	border: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+	position: relative;
+	z-index: 10;
+}
+
+.share-btn:hover {
+	background-color: var(--Desaturated-Dark-Blue);
+}
+
+.share-btn:hover svg path {
+	fill: white;
+}
+
+/* Active state for share button */
+.share-btn.active {
+	background: var(--Desaturated-Dark-Blue);
+}
+
+.share-btn.active svg path {
+	fill: white;
+}
+
+/* MOBILE SHARE MENU */
+.share-menu {
+	display: none;
+	position: absolute;
+	left: -32px;
+	right: -32px;
+	top: -20px;
+	bottom: -20px;
+	background: var(--Dark-Grayish-Blue);
+	padding: 0 32px;
+	align-items: center;
+	gap: 16px;
+	border-radius: 0 0 10px 10px;
+}
+
+.share-menu.active {
+	display: flex;
+}
+
+.share-label {
+	color: var(--Grayish-Blue);
+	letter-spacing: 5px;
+	font-size: 13px;
+	font-weight: 500;
+	text-transform: uppercase;
+}
+
+.share-link {
+	display: flex;
+	align-items: center;
+	transition: transform 0.2s ease;
+}
+
+.share-link:hover {
+	transform: scale(1.2);
+}
+
+.share-link img {
+	width: 20px;
+	height: 20px;
+}
+
+/* Hide author and original share button when share menu is active on mobile */
+.preview-footer.active .author,
+.preview-footer.active .share-btn:not(.active) {
+	display: none;
+}
+
+/* Position share button inside share menu on mobile */
+.preview-footer.active .share-btn {
+	margin-left: auto;
+}
+
+/* DESKTOP STYLES */
+@media (min-width: 768px) {
+	section {
+		display: flex;
+		max-width: 730px;
+	}
+
+	.preview-img {
+		width: 285px;
+		flex-shrink: 0;
+	}
+
+	.preview-img img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border-radius: 10px 0 0 10px;
+	}
+
+	.preview-content {
+		flex: 1;
+		padding: 32px 40px;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.preview-content h1 {
+		font-size: 20px;
+		line-height: 1.4;
+	}
+
+	.preview-content > p {
+		margin-bottom: auto;
+	}
+
+	.preview-footer {
+		margin-top: 20px;
+	}
+
+	/* Desktop Share Menu - Tooltip style */
+	.share-menu {
+		position: absolute;
+		left: auto;
+		right: -105px;
+		bottom: 60px;
+		top: auto;
+		width: 248px;
+		padding: 18px 36px;
+		border-radius: 10px;
+		box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+		justify-content: center;
+		gap: 16px;
+	}
+
+	.share-label {
+		margin-right: 0;
+	}
+
+	/* Arrow pointing down to share button */
+	.share-menu::after {
+		content: '';
+		position: absolute;
+		bottom: -8px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 0;
+		height: 0;
+		border-left: 12px solid transparent;
+		border-right: 12px solid transparent;
+		border-top: 12px solid var(--Dark-Grayish-Blue);
+	}
+
+	/* Keep author visible on desktop and reset mobile styles */
+	.preview-footer.active .author {
+		display: flex;
+		opacity: 1;
+		pointer-events: all;
+	}
+
+	.preview-footer.active .share-btn:not(.active) {
+		display: flex;
+	}
+
+	.preview-footer.active .share-btn {
+		margin-left: 0;
+	}
+}
