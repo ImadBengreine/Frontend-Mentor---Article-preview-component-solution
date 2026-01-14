@@ -30,10 +30,7 @@ Users should be able to:
 ![Desktop View](./screenshot-desktop.png)
 ![Mobile View](./screenshot-mobile.png)
 
-### Links
 
-- Solution URL: [GitHub Repository](https://github.com/ImadBengreine/article-preview-component)
-- Live Site URL: [Live Demo](https://imadbengreine.github.io/article-preview-component)
 
 ## My process
 
